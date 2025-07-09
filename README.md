@@ -70,4 +70,4 @@ We welcome contributions! Please see our `CONTRIBUTING.md` (coming soon) for gui
 
 ## License
 
-[License Information - e.g., MIT License]
+MIT License
