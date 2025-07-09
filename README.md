@@ -1,69 +1,73 @@
-# React + TypeScript + Vite
+# Serena UI - Component Library (Work in Progress)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the foundational components for the Serena UI component library. This library is currently under active development and is not yet ready for production use.
 
-Currently, two official plugins are available:
+## Project Status
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Work in Progress:** This library is in its early stages. APIs, components, and styling are subject to change without notice. We are actively building and refining the components.
 
-## Expanding the ESLint configuration
+## Getting Started (For Contributors)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+To set up the project locally:
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/lopesmarcello/serena-ui.git 
+    cd serena-ui
+    ```
+2.  **Install dependencies:**
+    ```bash
+    pnpm install
+    ```
+3.  **Run Storybook (for component development):**
+    ```bash
+    pnpm storybook
+    ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Building the Library
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+To build the library for distribution:
+
+```bash
+pnpm build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+This will output the compiled JavaScript, CommonJS, and TypeScript declaration files into the `dist/` directory.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Usage (For Consumers - Future)
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Once published, you will be able to install this library via npm:
+
+```bash
+npm install serena-ui # Or pnpm add serena-ui
 ```
+
+### Tailwind CSS Integration
+
+This library uses Tailwind CSS for styling. To ensure components are styled correctly in your application, you will need to configure your `tailwind.config.js` to include the library's files in its `content` array. This allows Tailwind to process the utility classes used within Serena UI components.
+
+Example `tailwind.config.js`:
+
+```javascript
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
+    // Include Serena UI components for Tailwind processing
+    './node_modules/serena-ui/**/*.{js,ts,jsx,tsx}',
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+## Contributing
+
+We welcome contributions! Please see our `CONTRIBUTING.md` (coming soon) for guidelines.
+
+## License
+
+[License Information - e.g., MIT License]

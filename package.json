@@ -1,11 +1,24 @@
 {
   "name": "serena-ui",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
+  "main": "./dist/serena-ui.umd.cjs",
+  "module": "./dist/serena-ui.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/serena-ui.js",
+      "require": "./dist/serena-ui.umd.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -p tsconfig.lib.json && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
@@ -16,9 +29,19 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
     "class-variance-authority": "^0.7.1",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
     "tailwindcss": "^4.1.11"
+  },
+  "peerDependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.0.1",
